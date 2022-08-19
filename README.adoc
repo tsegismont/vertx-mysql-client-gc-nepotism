@@ -1,0 +1,27 @@
+= Reproducer for GC nepotism with Vert.x MySQL Client
+
+== Running MySQL
+
+----
+docker run \
+  --ulimit nofile=262144:262144 \
+  --network=host \
+  -p 3306:3306 \
+  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_DATABASE=baeldung \
+  -v ${PWD}/baeldung.sql:/docker-entrypoint-initdb.d/init.sql \
+  mysql:5.7.38 \
+  --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+----
+
+== Building
+
+----
+mvn clean package
+----
+
+== Running
+
+----
+java -XX:+UseParallelGC -Xmx1G -Xms1G -verbose:gc -jar target/app.jar
+----
