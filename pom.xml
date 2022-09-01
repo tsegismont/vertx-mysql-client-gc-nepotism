@@ -14,6 +14,7 @@
         <vertx-maven-plugin.version>1.0.28</vertx-maven-plugin.version>
         <vertx.version>4.2.7</vertx.version>
         <vertx.verticle>org.example.client.MainVerticle</vertx.verticle>
+        <vertx.launcher>org.example.client.CustomLauncher</vertx.launcher>
     </properties>
 
     <dependencyManagement>
@@ -30,7 +31,22 @@
     <dependencies>
         <dependency>
             <groupId>io.vertx</groupId>
+            <artifactId>vertx-micrometer-metrics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-jmx</artifactId>
+            <version>1.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
+            <artifactId>vertx-sql-client</artifactId>
+            <!--            <version>4.2.8-SNAPSHOT</version>-->
+        </dependency>
+        <dependency>
+            <groupId>io.vertx</groupId>
             <artifactId>vertx-mysql-client</artifactId>
+            <!--            <version>4.2.8-SNAPSHOT</version>-->
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
