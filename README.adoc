@@ -17,11 +17,18 @@ docker run \
 == Building
 
 ----
-mvn clean package
+mvn clean package -Doverride.version=4.2.7-SQL1225
 ----
 
 == Running
 
 ----
-java -XX:+UseParallelGC -Xmx1G -Xms1G -verbose:gc -jar target/app.jar
+java \
+  -server \
+  -Xms1G -Xmx1G -XX:-UseAdaptiveSizePolicy \
+  -XX:+UseParallelGC \
+  -XX:+HeapDumpBeforeFullGC \
+  -Xlog:gc*::time \
+  -XX:StartFlightRecording=disk=true,dumponexit=true,settings=detailed.jfc \
+  -jar target/app.jar
 ----
