@@ -14,7 +14,7 @@ public class CustomLauncher extends Launcher {
     @Override
     public void beforeStartingVertx(VertxOptions options) {
         options.setMetricsOptions(new MicrometerMetricsOptions()
-                .setEnabled(true)
+                .setEnabled(false)
                 .setJmxMetricsOptions(new VertxJmxMetricsOptions()
                         .setEnabled(true)
                         .setStep(1)
