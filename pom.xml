@@ -15,6 +15,7 @@
         <vertx.version>4.2.7</vertx.version>
         <vertx.verticle>org.example.client.MainVerticle</vertx.verticle>
         <vertx.launcher>org.example.client.CustomLauncher</vertx.launcher>
+        <override.version>${vertx.version}</override.version>
     </properties>
 
     <dependencyManagement>
@@ -41,18 +42,20 @@
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-sql-client</artifactId>
-            <!--            <version>4.2.8-SNAPSHOT</version>-->
+            <version>${override.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-mysql-client</artifactId>
-            <!--            <version>4.2.8-SNAPSHOT</version>-->
+            <version>${override.version}</version>
         </dependency>
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-core</artifactId>
+            <version>${override.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>app</finalName>
         <plugins>
