@@ -75,11 +75,9 @@ public class MainVerticle extends AbstractVerticle {
 
         pool = MySQLPool.pool(vertx, connectOptions, poolOptions);
 
+        timer1 = vertx.setPeriodic(2, id -> runQuery(GET_BY_CITY, cities));
         vertx.setTimer(1, l -> {
-            timer1 = vertx.setPeriodic(1, id -> runQuery(GET_BY_CITY, cities));
-        });
-        vertx.setTimer(2, l -> {
-            timer2 = vertx.setPeriodic(1, id -> runQuery(GET_BY_ZIPCODE, zipCodes));
+            timer2 = vertx.setPeriodic(2, id -> runQuery(GET_BY_ZIPCODE, zipCodes));
         });
     }
 
