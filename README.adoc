@@ -25,10 +25,11 @@ mvn clean package -Doverride.version=4.2.7-SQL1225
 ----
 java \
   -server \
-  -Xms1G -Xmx1G -XX:-UseAdaptiveSizePolicy \
+  -Xms128M -Xmx128M -XX:-UseAdaptiveSizePolicy \
   -XX:+UseParallelGC \
   -XX:+HeapDumpBeforeFullGC \
   -Xlog:gc*::time \
   -XX:StartFlightRecording=disk=true,dumponexit=true,settings=detailed.jfc \
+  -DenableMetrics=false \
   -jar target/app.jar
 ----
