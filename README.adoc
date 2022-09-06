@@ -31,5 +31,6 @@ java \
   -Xlog:gc*::time \
   -XX:StartFlightRecording=disk=true,dumponexit=true,settings=detailed.jfc \
   -DenableMetrics=false \
+  -DsslMode=disabled \
   -jar target/app.jar
 ----

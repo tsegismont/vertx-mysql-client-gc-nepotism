@@ -20,6 +20,8 @@ import static java.util.stream.Collectors.toList;
 
 public class MainVerticle extends AbstractVerticle {
 
+    private static final SslMode SSL_MODE = SslMode.of(System.getProperty("sslMode", "disabled"));
+
     //language=MySQL
     private static final String GET_BY_CITY = "SELECT" +
             " zipcode0_.zip      AS zip1_0_,\n" +
@@ -66,7 +68,7 @@ public class MainVerticle extends AbstractVerticle {
                 .setDatabase("baeldung")
                 .setUser("root")
                 .setPassword("root")
-                .setSslMode(SslMode.REQUIRED)
+                .setSslMode(SSL_MODE)
                 .setTrustAll(true);
 
         PoolOptions poolOptions = new PoolOptions()
