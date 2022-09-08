@@ -21,6 +21,7 @@ import static java.util.stream.Collectors.toList;
 public class MainVerticle extends AbstractVerticle {
 
     private static final SslMode SSL_MODE = SslMode.of(System.getProperty("sslMode", "disabled"));
+    private static final boolean CACHE_PREPARED_STATEMENTS = Boolean.getBoolean("cachePreparedStatements");
 
     //language=MySQL
     private static final String GET_BY_CITY = "SELECT" +
@@ -62,7 +63,7 @@ public class MainVerticle extends AbstractVerticle {
         zipCodes = readAll("zip_codes");
 
         MySQLConnectOptions connectOptions = new MySQLConnectOptions()
-                .setCachePreparedStatements(false)
+                .setCachePreparedStatements(CACHE_PREPARED_STATEMENTS)
                 .setPort(3306)
                 .setHost("localhost")
                 .setDatabase("baeldung")

@@ -32,5 +32,6 @@ java \
   -XX:StartFlightRecording=disk=true,dumponexit=true,settings=detailed.jfc \
   -DenableMetrics=false \
   -DsslMode=disabled \
+  -DcachePreparedStatements=false \
   -jar target/app.jar
 ----
